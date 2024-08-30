@@ -1,0 +1,147 @@
+# Contract for fetching all rooms
+
+Request:
+  Method: GET
+  URL: /rooms
+  Headers:
+    Accept: application/json
+
+Response (Success):
+  Status: 200
+  Headers:
+    Content-Type: application/json
+  Body:
+    [
+      {
+        "id": 1,
+        "name": "Conference Room A",
+        "location": "Building 1, Floor 2",
+        "capacity": 20
+      },
+      {
+        "id": 2,
+        "name": "Meeting Room B",
+        "location": "Building 2, Floor 3",
+        "capacity": 15
+      }
+    ]
+
+Response (No Content):
+  Status: 204
+  Headers:
+    Content-Type: application/json
+  Body: []
+
+
+# Contract for fetching a room by ID
+
+Request:
+  Method: GET
+  URL: /rooms/{id}
+  Headers:
+    Accept: application/json
+  Path Variables:
+    id: 1
+
+Response (Success):
+  Status: 200
+  Headers:
+    Content-Type: application/json
+  Body:
+    {
+      "id": 1,
+      "name": "Conference Room A",
+      "location": "Building 1, Floor 2",
+      "capacity": 20
+    }
+
+Response (Not Found):
+  Status: 404
+  Body: null
+  
+# Contract for creating a new room
+
+Request:
+  Method: POST
+  URL: /rooms
+  Headers:
+    Content-Type: application/json
+  Body:
+    {
+      "name": "Conference Room A",
+      "location": "Building 1, Floor 2",
+      "capacity": 20
+    }
+
+Response (Success):
+  Status: 201
+  Headers:
+    Content-Type: application/json
+  Body:
+    {
+      "id": 1,
+      "name": "Conference Room A",
+      "location": "Building 1, Floor 2",
+      "capacity": 20
+    }
+
+Response (Error):
+  Status: 500
+  Body: null
+
+# Contract for updating a room
+
+Request:
+  Method: PUT
+  URL: /rooms/{id}
+  Headers:
+    Content-Type: application/json
+  Path Variables:
+    id: 1
+  Body:
+    {
+      "name": "Updated Conference Room",
+      "location": "Building 1, Floor 3",
+      "capacity": 25
+    }
+
+Response (Success):
+  Status: 200
+  Headers:
+    Content-Type: application/json
+  Body:
+    {
+      "id": 1,
+      "name": "Updated Conference Room",
+      "location": "Building 1, Floor 3",
+      "capacity": 25
+    }
+
+Response (Not Found):
+  Status: 404
+  Body: null
+
+Response (Error):
+  Status: 500
+  Body: null
+
+# Contract for deleting a room
+
+Request:
+  Method: DELETE
+  URL: /rooms/{id}
+  Path Variables:
+    id: 1
+
+Response (Success):
+  Status: 204
+  Body: null
+
+Response (Not Found):
+  Status: 404
+  Body: null
+
+Response (Error):
+  Status: 500
+  Body: null
+

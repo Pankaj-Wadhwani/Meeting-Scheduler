@@ -1,0 +1,8 @@
+User Interface -> MeetingController: POST /meetings
+MeetingController -> MeetingService: createMeeting(meeting)
+MeetingService -> MeetingRepository: save(meeting)
+MeetingRepository -> Database: Insert meeting record
+Database -> MeetingRepository: Return saved meeting
+MeetingRepository -> MeetingService: Return saved meeting
+MeetingService -> MeetingController: Return saved meeting
+MeetingController -> User Interface: Return success response

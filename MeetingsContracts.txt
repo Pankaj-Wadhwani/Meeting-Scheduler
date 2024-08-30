@@ -1,0 +1,62 @@
+# Contract for scheduling a new meeting
+
+Request:
+  Method: POST
+  URL: /meetings
+  Headers:
+    Content-Type: application/json
+  Body:
+    {
+      "title": "Project Kickoff",
+      "description": "Initial project kickoff meeting",
+      "startTime": "2024-09-01T10:00:00",
+      "endTime": "2024-09-01T11:00:00",
+      "participants": ["john.doe@example.com", "jane.smith@example.com"]
+    }
+
+Response:
+  Status: 200
+  Headers:
+    Content-Type: application/json
+  Body:
+    {
+      "id": 1,
+      "title": "Project Kickoff",
+      "description": "Initial project kickoff meeting",
+      "startTime": "2024-09-01T10:00:00",
+      "endTime": "2024-09-01T11:00:00",
+      "participants": ["john.doe@example.com", "jane.smith@example.com"]
+    }
+
+Error Case - Invalid Input:
+  Status: 400
+  Body:
+    Invalid input provided for meeting scheduling
+
+# Contract for fetching a meeting by ID
+
+Request:
+  Method: GET
+  URL: /meetings/{id}
+  Headers:
+    Accept: application/json
+  Path Variables:
+    id: 1
+
+Response (Success):
+  Status: 200
+  Headers:
+    Content-Type: application/json
+  Body:
+    {
+      "id": 1,
+      "title": "Project Kickoff",
+      "description": "Initial project kickoff meeting",
+      "startTime": "2024-09-01T10:00:00",
+      "endTime": "2024-09-01T11:00:00",
+      "participants": ["john.doe@example.com", "jane.smith@example.com"]
+    }
+
+Response (Not Found):
+  Status: 404
+  Body: null
