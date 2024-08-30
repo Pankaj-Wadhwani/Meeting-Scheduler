@@ -22,7 +22,7 @@ The application follows a layered architecture with the following components:
 ## Technologies
 
 - **Back-end:** Java, Spring Boot
-- **Database:** MySQL (or any other relational database)
+- **Database:** OracleDB
 - **Testing:** JUnit 4, Spring Boot Test
 - **Build Tool:** Maven 
 
